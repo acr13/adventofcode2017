@@ -15,32 +15,6 @@ const convertHash = numbers => {
   return denseHash;
 };
 
-/* Wow.... shitty fuckin method
-const reverseSubset = (list, start, len) => {
-  if (len < 2) { return list; }
-  let end = start + len;
-
-  if (end >= list.length) {
-    end = end - list.length - 1;
-    let numSwaps = Math.floor(len / 2);
-
-    while (numSwaps > 0) {
-      let temp = list[start];
-      list[start] = list[end];
-      list[end] = temp;
-
-      start = (start + 1) >= list.length ? 0 : start + 1;
-      end = (end - 1) < 0 ? (list.length - 1) : end - 1;
-      numSwaps--;
-    }
-
-    return list;
-  }
-
-  return [...list.slice(0, start), ...list.slice(start, end).reverse(), ...list.slice((start + len))];
-};
-*/
-
 const partOne = (list, input, currentPosition, skipSize) => {
   let legnths = null;
   if (typeof input === 'string') {
@@ -78,7 +52,6 @@ const partTwo = (list, lengths) => {
     [theString, pos, skip] = partOne(theString, asciiLegnths, pos, skip);
   }
 
-  console.log(theString.length);
   const denseHash = convertHash(theString);
 
   return denseHash.map(num => num.toString(16)) // convert to hex
@@ -88,5 +61,9 @@ const partTwo = (list, lengths) => {
 
 const [p1, ...rest] = partOne(list, input, 0, 0);
 
-console.log('Part One:', p1[0] * p1[1]);
-console.log('Part Two:', partTwo(list, input));
+// console.log('Part One:', p1[0] * p1[1]);
+// console.log('Part Two:', partTwo(list, input));
+
+module.exports = {
+  partTwo
+};

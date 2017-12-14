@@ -29,7 +29,7 @@ const generateGrid = () => {
 };
 
 const numSquaresInGrid = grid => {
-  const sum = grid.reduce((sum, hash) => {
+  return grid.reduce((sum, hash) => {
     let thisSum = 0;
 
     for (let j = 0; j < hash.length; j++) {
@@ -40,8 +40,6 @@ const numSquaresInGrid = grid => {
 
     return sum += thisSum;
   }, 0);
-
-  return sum;
 };
 
 const getUsedAdjacentCells = (grid, row, col, visited) => {
